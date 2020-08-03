@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
     private SectionedRecyclerViewAdapter sectionedAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.activity_daftar_menu, container, false);
         init(view);
 
         return view;
