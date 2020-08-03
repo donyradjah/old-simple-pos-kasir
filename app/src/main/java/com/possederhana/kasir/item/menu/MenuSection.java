@@ -1,5 +1,6 @@
 package com.possederhana.kasir.item.menu;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -43,6 +44,7 @@ public class MenuSection extends Section {
     @Override
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyItemViewHolder itemHolder = (MyItemViewHolder) holder;
+        Log.d("Produk", produks.get(position).getNamaProduk());
 
         // bind your view here
         itemHolder.tvItem.setText(produks.get(position).getNamaProduk());
@@ -59,7 +61,7 @@ public class MenuSection extends Section {
         super.onBindHeaderViewHolder(holder);
 
         MyHeaderViewHolder itemHolder = (MyHeaderViewHolder) holder;
-
+        Log.d("Kategori Produk", kategori.getKategori());
         itemHolder.tvItem.setText(kategori.getKategori());
     }
 

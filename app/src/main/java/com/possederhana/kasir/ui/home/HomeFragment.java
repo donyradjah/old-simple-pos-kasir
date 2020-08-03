@@ -83,6 +83,7 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot data : dataSnapshot.child("kategori").getChildren()) {
 
                     Kategori kategori = new Kategori(Integer.parseInt(data.getKey()), data.child("kategori").getValue().toString());
+                    System.out.println("Kategori : " + data.child("kategori").getValue().toString());
                     kategoris.add(kategori);
                 }
 
@@ -114,15 +115,15 @@ public class HomeFragment extends Fragment {
 
                 for (Kategori kategori : kategoris) {
                     MenuSection menuSection = new MenuSection(kategori, kategori.getProduks());
-
+                    System.out.println("Kategori : " + kategori.getKategori());
                     sectionedAdapter.addSection(menuSection);
                 }
 
                 rvListMenu.setAdapter(sectionedAdapter);
-
+                sectionedAdapter.notifyDataSetChanged();
 //                pDialog.dismissWithAnimation();
 
-                Toast.makeText(getActivity().getApplicationContext(),"selesai",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(), "selesai", Toast.LENGTH_LONG).show();
             }
 
             @Override
