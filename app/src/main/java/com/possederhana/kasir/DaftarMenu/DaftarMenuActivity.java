@@ -102,7 +102,10 @@ public class DaftarMenuActivity extends AppCompatActivity implements NavigationV
 
                 for (DataSnapshot data : dataSnapshot.child("kategori").getChildren()) {
 
-                    Kategori kategori = new Kategori(Integer.parseInt(data.getKey()), data.child("kategori").getValue().toString());
+                    Kategori kategori = new Kategori();
+                    kategori.setId(Integer.parseInt(data.getKey()));
+                    kategori.setKategori(data.child("kategori").getValue().toString());
+                    kategori.setProduks(new ArrayList<Produk>());
                     kategoris.add(kategori);
                 }
 
@@ -133,16 +136,15 @@ public class DaftarMenuActivity extends AppCompatActivity implements NavigationV
                 }
 
                 for (Kategori kategori : kategoris) {
-                    MenuSection menuSection = new MenuSection(kategori, kategori.getProduks());
+                    MenuSection menuSection = new MenuSection(getApplicationContext(), kategori, kategori.getProduks());
                     System.out.println("Kategori : " + kategori.getKategori());
                     sectionedAdapter.addSection(menuSection);
                 }
 
                 rvListMenu.setAdapter(sectionedAdapter);
                 sectionedAdapter.notifyDataSetChanged();
-//                pDialog.dismissWithAnimation();
+                pDialog.dismissWithAnimation();
 
-                Toast.makeText(getApplicationContext(), "selesai", Toast.LENGTH_LONG).show();
             }
 
             @Override

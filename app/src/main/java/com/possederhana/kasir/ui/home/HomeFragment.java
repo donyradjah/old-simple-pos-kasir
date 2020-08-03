@@ -113,11 +113,6 @@ public class HomeFragment extends Fragment {
                     }
                 }
 
-                for (Kategori kategori : kategoris) {
-                    MenuSection menuSection = new MenuSection(kategori, kategori.getProduks());
-                    System.out.println("Kategori : " + kategori.getKategori());
-                    sectionedAdapter.addSection(menuSection);
-                }
 
                 rvListMenu.setAdapter(sectionedAdapter);
                 sectionedAdapter.notifyDataSetChanged();
