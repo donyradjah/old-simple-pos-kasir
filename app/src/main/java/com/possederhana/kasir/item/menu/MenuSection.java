@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,6 +55,12 @@ public class MenuSection extends Section {
 
         Picasso.with(context).load(url).into(itemHolder.imgItem);
 
+        if (produks.get(position).getStatus() == "tersedia") {
+            itemHolder.switchItem.setChecked(true);
+        } else {
+            itemHolder.switchItem.setChecked(false);
+        }
+
         // bind your view here
         itemHolder.tvItem.setText(produks.get(position).getNamaProduk());
     }
@@ -76,12 +83,14 @@ public class MenuSection extends Section {
     static class MyItemViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvItem;
         private final ImageView imgItem;
+        private final Switch switchItem;
 
         public MyItemViewHolder(View itemView) {
             super(itemView);
 
             tvItem = (TextView) itemView.findViewById(R.id.tvItem);
             imgItem = itemView.findViewById(R.id.imgItem);
+            switchItem = itemView.findViewById(R.id.switchItem);
         }
     }
 
