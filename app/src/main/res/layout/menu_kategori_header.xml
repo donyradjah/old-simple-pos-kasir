@@ -7,6 +7,13 @@
     android:paddingTop="5dp"
     android:paddingBottom="5dp">
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary" />
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -16,13 +23,8 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
-        android:textStyle="bold"
         android:textSize="20sp"
+        android:textStyle="bold"
         tools:text="Title test text" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary" />
 </RelativeLayout>

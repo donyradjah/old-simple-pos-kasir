@@ -14,8 +14,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.kinda.alert.KAlertDialog;
 import com.possederhana.kasir.R;
-import com.possederhana.kasir.item.menu.MenuSection;
 import com.possederhana.kasir.model.Kategori;
 import com.possederhana.kasir.model.Produk;
 
@@ -99,6 +96,7 @@ public class DaftarMenuActivity extends AppCompatActivity implements NavigationV
                 // whenever data at this location is updated.
 
                 kategoris.clear();
+                sectionedAdapter.removeAllSections();
 
                 for (DataSnapshot data : dataSnapshot.child("kategori").getChildren()) {
 

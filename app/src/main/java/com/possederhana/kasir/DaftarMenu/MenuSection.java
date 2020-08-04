@@ -1,14 +1,17 @@
-package com.possederhana.kasir.item.menu;
+package com.possederhana.kasir.DaftarMenu;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.possederhana.kasir.R;
 import com.possederhana.kasir.model.Kategori;
 import com.possederhana.kasir.model.Produk;
@@ -20,6 +23,9 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 
 public class MenuSection extends Section {
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef;
 
     private final Context context;
     private final Kategori kategori;
@@ -55,7 +61,7 @@ public class MenuSection extends Section {
 
         Picasso.with(context).load(url).into(itemHolder.imgItem);
 
-        if (produks.get(position).getStatus() == "tersedia") {
+        if (produks.get(position).getStatus().equals("tersedia")) {
             itemHolder.switchItem.setChecked(true);
         } else {
             itemHolder.switchItem.setChecked(false);
@@ -63,6 +69,18 @@ public class MenuSection extends Section {
 
         // bind your view here
         itemHolder.tvItem.setText(produks.get(position).getNamaProduk());
+        myRef = database.getReference("najieb-pos/produk/" + produks.get(position).getId() + "/status");
+
+        itemHolder.switchItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    myRef.setValue("tersedia");
+                } else {
+                    myRef.setValue("kosong");
+                }
+            }
+        });
     }
 
     @Override

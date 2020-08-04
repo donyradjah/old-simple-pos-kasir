@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DaftarTransaksi.DaftarTransaksiActivity"></activity>
+        <activity android:name=".Home.HomeActivity"></activity>
+        <activity android:name=".DaftarTransaksi.DaftarTransaksiActivity" />
         <activity
             android:name=".DaftarMenu.DaftarMenuActivity"
             android:label="Daftar Menu"
