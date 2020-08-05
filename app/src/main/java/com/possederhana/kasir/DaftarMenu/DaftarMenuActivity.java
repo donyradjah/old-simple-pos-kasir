@@ -14,6 +14,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +35,7 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 
 import static android.content.ContentValues.TAG;
 
-public class DaftarMenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DaftarMenuActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef;
@@ -40,6 +43,11 @@ public class DaftarMenuActivity extends AppCompatActivity implements NavigationV
 
     ArrayList<Kategori> kategoris = new ArrayList<>();
     RecyclerView rvListMenu;
+
+    ImageView btnMenu;
+    TextView txtMenu;
+
+
     private SectionedRecyclerViewAdapter sectionedAdapter;
 
     @Override
@@ -47,26 +55,22 @@ public class DaftarMenuActivity extends AppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_menu);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        btnMenu = findViewById(R.id.btnMenu);
+        txtMenu = findViewById(R.id.txtMenu);
+
+        btnMenu.setImageResource(R.drawable.ic_arrow_back);
+        txtMenu.setText("Daftar Menu");
+
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         init();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     void init() {
 

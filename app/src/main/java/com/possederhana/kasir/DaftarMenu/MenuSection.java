@@ -17,7 +17,9 @@ import com.possederhana.kasir.model.Kategori;
 import com.possederhana.kasir.model.Produk;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
@@ -69,6 +71,7 @@ public class MenuSection extends Section {
 
         // bind your view here
         itemHolder.tvItem.setText(produks.get(position).getNamaProduk());
+        itemHolder.tvHarga.setText(formatRupiah((double) produks.get(position).getHarga()));
         myRef = database.getReference("najieb-pos/produk/" + produks.get(position).getId() + "/status");
 
         itemHolder.switchItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -99,7 +102,7 @@ public class MenuSection extends Section {
     }
 
     static class MyItemViewHolder extends RecyclerView.ViewHolder {
-        private final TextView tvItem;
+        private final TextView tvItem, tvHarga;
         private final ImageView imgItem;
         private final Switch switchItem;
 
@@ -107,6 +110,7 @@ public class MenuSection extends Section {
             super(itemView);
 
             tvItem = (TextView) itemView.findViewById(R.id.tvItem);
+            tvHarga = (TextView) itemView.findViewById(R.id.tvHarga);
             imgItem = itemView.findViewById(R.id.imgItem);
             switchItem = itemView.findViewById(R.id.switchItem);
         }
@@ -120,5 +124,11 @@ public class MenuSection extends Section {
 
             tvItem = (TextView) itemView.findViewById(R.id.tvTitle);
         }
+    }
+
+    private String formatRupiah(Double number) {
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        return formatRupiah.format(number);
     }
 }
