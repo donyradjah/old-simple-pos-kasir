@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.possederhana.kasir.DaftarMenu.DaftarMenuActivity;
+import com.possederhana.kasir.DaftarTransaksi.DaftarTransaksiActivity;
 import com.possederhana.kasir.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -19,6 +20,11 @@ public class HomeActivity extends AppCompatActivity {
 
     public void openDaftarMenu(View view) {
         Intent ListVideo = new Intent(getApplicationContext(), DaftarMenuActivity.class);
+        startActivity(ListVideo);
+    }
+
+    public void openDaftaTransaksi(View view) {
+        Intent ListVideo = new Intent(getApplicationContext(), DaftarTransaksiActivity.class);
         startActivity(ListVideo);
     }
 }
