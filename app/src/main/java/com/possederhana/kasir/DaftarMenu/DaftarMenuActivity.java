@@ -138,7 +138,7 @@ public class DaftarMenuActivity extends AppCompatActivity {
                 }
 
                 for (Kategori kategori : kategoris) {
-                    MenuSection menuSection = new MenuSection(getApplicationContext(), kategori, kategori.getProduks());
+                    MenuSection menuSection = new MenuSection(DaftarMenuActivity.this, getApplicationContext(), kategori, kategori.getProduks());
                     System.out.println("Kategori : " + kategori.getKategori());
                     sectionedAdapter.addSection(menuSection);
                 }

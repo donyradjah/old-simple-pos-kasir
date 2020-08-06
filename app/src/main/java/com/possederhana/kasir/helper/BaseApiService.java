@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 public interface BaseApiService {
 
     @FormUrlEncoded
-    @POST("api/v1/login")
+    @POST("produk/ganti-status")
     Call<ResponseBody> gantiStatus(@Field("id") int id,
                                    @Field("status") String status);
 
