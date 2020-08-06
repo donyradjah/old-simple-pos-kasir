@@ -106,13 +106,7 @@ public class DaftarTransaksiActivity extends AppCompatActivity {
 
                     for (String s : kategoriId) {
                         int idKategori = Integer.parseInt(s);
-                        int keyKategori = cariKategoriById(idKategori);
-                        if (keyKategori >= 0) {
-                            ArrayList<Produk> produks = kategoris.get(keyKategori).getProduks();
 
-                            produks.add(produk);
-                            kategoris.get(keyKategori).setProduks(produks);
-                        }
                     }
                 }
 
